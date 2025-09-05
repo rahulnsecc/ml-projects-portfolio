@@ -1,0 +1,12 @@
+Open terminal at root project folders
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+python app.py
+request.py
+pip list --format=freeze > requirements.txt
+
+
+curl -X POST -H "Content-Type: application/json" -d '{"text": "Unable to authenticate user"}' http://localhost:5000/predict
+
+

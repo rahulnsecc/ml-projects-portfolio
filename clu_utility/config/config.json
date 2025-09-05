@@ -1,0 +1,17 @@
+{
+    "azure": {
+        "endpoint": "",
+        "client_id": "",
+        "tenant_id": "",
+        "client_secret": ""
+    },
+    "project": {
+        "project_name": "transaction_data_extraction",
+        "deployment_name": "transaction_data_extraction_deployment",
+        "model_name": "transaction_data_extraction_model"
+    },
+    "training": {
+        "training_mode": "standard",
+        "data_splitting": "auto"
+    }
+}

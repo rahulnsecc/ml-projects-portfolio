@@ -1,0 +1,116 @@
+{
+    "key_mappings": {
+        "store": "store_number",
+        "store number": "store_number",
+        "str": "store_number",
+        "str#": "store_number",
+        "rx": "mapped_key"
+        },
+    "intents": {
+        "extract_transaction_data": [
+            "report",
+            "extract transaction data",
+            "I need transaction data",
+            "get transaction records",
+            "fetch transaction information",
+            "retrieve transaction data",
+            "show me my recent transactions",
+            "list my purchases",
+            "get details of my transactions",
+            "display my transaction history",
+            "09/01/2023 to 09/30/2023"
+        ],
+        "provide_additional_details": [
+            "Store Number: 44444; Rx Number: 33333; Card last 4 digits: 4232; Card first 6 digits: 243432; Total transaction amount: 434; Program Account Number: 434434334; Transaction ID: 43434; Customer ID: 324234; UPC Number: 423432; Register Number: 4324233;",
+            "str#33333; Rx#22222; Card last 4 digits: 1111; Card first 6 digits: 444444; Total amount: 300; Program Account#: 222222222; Transaction ID: 33333; Customer ID: 111111; UPC: 444444; Register#: 1111111;",
+            "Store: 12345, Rx: 54321, Last 4 digits: 1234, First 6 digits: 654321, Total amount: 100, Account Number: 123456789, Transaction: 98765, Customer: 56789, UPC: 987654, Register: 87654",
+            "Store Number: 67890, Rx Number: 98765, Card last 4 digits: 5678, Card first 6 digits: 123456, Total transaction amount: 200, Program Account Number: 987654321, Transaction ID: 87654, Customer ID: 123456, UPC Number: 567890, Register Number: 345678",
+            "Store: 45678, Rx: 87654, Last 4 digits: 7890, First 6 digits: 987654, Total amount: 50, Account Number: 9876543210, Transaction: 54321, Customer: 654321, UPC: 876543, Register: 234567",
+            "Store Number: 33333, Rx Number: 22222, Card last 4 digits: 1111, Card first 6 digits: 444444, Total transaction amount: 300, Program Account Number: 222222222, Transaction ID: 33333, Customer ID: 111111, UPC Number: 444444, Register Number: 1111111",
+            "1:33333; 2:22222; 3: 1111; 4: 444444; 5: 300; 6: 222222222; 7: 33333; 8: 111111; 9: 444444; 10: 1111111;",
+            "str:33333; rx:22222; card 4: 1111; card 6: 444444; tran amount: 300; PAN: 222222222; TID: 33333; CID: 111111; UPC: 444444; REG: 1111111;"
+        ]
+    },
+    "entities": {
+        "date_range": [
+            "MM/DD/YYYY to MM/DD/YYYY",
+            "02/21/2024 to 03/15/2024",
+            "01/01/2023 to 12/31/2023",
+            "04/15/2022 to 04/20/2022",
+            "06/01/2023 to 06/30/2023",
+            "11/05/2023 to 11/15/2023",
+            "09/01/2023 to 09/30/2023"
+        ],
+        "store_number": [
+
+            "Store Number: 44444",
+            "Store: 12345",
+            "Store Number: 67890",
+            "Store: 45678",
+            "Store Number: 33333"
+        ],
+        "rx_number": [
+            "Rx Number: 33333",
+            "Rx: 54321",
+            "Rx Number: 98765",
+            "Rx: 87654",
+            "Rx Number: 22222"
+        ],
+        "card_last_4_digits": [
+            "Card last 4 digits: 4232",
+            "Last 4 digits: 1234",
+            "Card last 4 digits: 5678",
+            "Last 4 digits: 7890",
+            "Card last 4 digits: 1111"
+        ],
+        "card_first_6_digits": [
+            "Card first 6 digits: 243432",
+            "First 6 digits: 654321",
+            "Card first 6 digits: 123456",
+            "First 6 digits: 987654",
+            "Card first 6 digits: 444444"
+        ],
+        "total_transaction_amount": [
+            "Total transaction amount: 434",
+            "Total amount: 100",
+            "Total transaction amount: 200",
+            "Total amount: 50",
+            "Total transaction amount: 300"
+        ],
+        "program_account_number": [
+            "Program Account Number: 434434334",
+            "Account Number: 123456789",
+            "Program Account Number: 987654321",
+            "Account Number: 9876543210",
+            "Program Account Number: 222222222"
+        ],
+        "transaction_id": [
+            "Transaction ID: 43434",
+            "Transaction: 98765",
+            "Transaction ID: 87654",
+            "Transaction: 54321",
+            "Transaction ID: 33333"
+        ],
+        "customer_id": [
+            "Customer ID: 324234",
+            "Customer: 56789",
+            "Customer ID: 123456",
+            "Customer: 654321",
+            "Customer ID: 111111"
+        ],
+        "upc_number": [
+            "UPC Number: 423432",
+            "UPC: 987654",
+            "UPC Number: 567890",
+            "UPC: 876543",
+            "UPC Number: 444444"
+        ],
+        "register_number": [
+            "Register Number: 4324233",
+            "Register: 87654",
+            "Register Number: 345678",
+            "Register: 234567",
+            "Register Number: 1111111"
+        ]
+    }
+}

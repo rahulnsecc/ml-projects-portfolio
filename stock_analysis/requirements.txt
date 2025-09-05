@@ -1,0 +1,8 @@
+os
+yfinance
+pandas_ta
+matplotlib
+pandas
+numpy
+scikit-learn
+autogen

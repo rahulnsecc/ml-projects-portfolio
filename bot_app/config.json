@@ -1,0 +1,37 @@
+{
+  "MESSAGES": {
+      "prompt_request": "How may I help you?",
+      "report_ready":"Your report is ready",
+      "prompt_start_date": "Please provide the start date (MM/DD/YYYY).",
+      "prompt_end_date": "Please provide the end date (MM/DD/YYYY).",
+      "prompt_additional_info": "Please provide any additional information in key:value format separated by commas.",
+      "prompt_confirm": "Do you confirm the information provided? (yes/no)",
+      "prompt_edit": "Do you want to edit the information provided? (yes/no)",
+      "thank_you": "Thank you for using our service.",
+      "provide_additional_details": ["extract transaction data", "generate report"],
+      "prompt_ticket":"Please provide ticket",
+      "no_ticket":"Ticket created",
+      "valid_date": "Please enter a valid date in the format YYYY-MM-DD.",
+      "retry_start_date_prompt": "Please provide start date (MM/DD/YYYY) ",
+      "retry_end_date_prompt": "Please provide end date (MM/DD/YYYY) "
+  },
+  "SQL_QUERIES": {
+      "transaction_query": "SELECT * FROM Transactions WHERE TransactionDate BETWEEN ? AND ?"
+  },
+  "REPORT_CONFIG": {
+    "RequestTransactionReport": {
+      "required_fields": ["start_date", "end_date"],
+      "optional_fields": ["store_number", "rx_number"]
+    },
+    "sales_report": {
+      "required_fields": ["start_date", "end_date"],
+      "optional_fields": ["region", "product_category"]
+    }
+  },
+  "KEYMAP_CONFIG":{
+    "storeNumber": "store_number",
+    "startDate": "start_date",
+    "endDate": "end_date",
+    "rxNumber": "rx_number"
+}
+}

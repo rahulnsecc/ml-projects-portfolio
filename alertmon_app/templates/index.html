@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alert & Certificate Monitor Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="header">
+    <h1>Alert & Certificate Monitor</h1>
+    <div class="meta">
+      <div class="dot live"></div>
+      <div id="lastUpdated">Loading...</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="alerts">Alerts</button>
+      <button class="tab-btn" data-tab="certs">Certificates</button>
+    </div>
+
+    <div id="alerts-tab" class="tab-content active">
+      <div class="main-content-grid">
+        <div class="filter-sidebar">
+          <div class="filter-card">
+            <h2>Alert Filters</h2>
+            <div class="filter-group">
+              <label for="fromFilter">From:</label>
+              <input type="text" id="fromFilter" placeholder="Filter 'From'...">
+            </div>
+            <div class="filter-group">
+              <label for="toFilter">To:</label>
+              <input type="text" id="toFilter" placeholder="Filter 'To'...">
+            </div>
+            <div class="filter-group">
+              <label for="alertTimeFilter">Time Range:</label>
+              <select id="alertTimeFilter">
+                <option value="all">All Time</option>
+                <option value="1d">Last 1 Day</option>
+                <option value="7d">Last 7 Days</option>
+                <option value="30d">Last 30 Days</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="alertEventFilter">Event:</label>
+              <input type="text" id="alertEventFilter" placeholder="Filter event...">
+            </div>
+            <div class="filter-group">
+              <label for="alertStatusFilter">Status:</label>
+              <select id="alertStatusFilter">
+                <option value="all">All</option>
+                <option value="SUCCESS">Success</option>
+                <option value="FAILED">Failed</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="main-display">
+          <div class="cards">
+            <div class="card">
+              <h2>Summary</h2>
+              <div class="summary-grid">
+                <div class="stat-item" data-filter-status="all" data-filter-anomaly="all">
+                  <div class="stat" id="statTotal">0</div>
+                  <div class="label">Total Alerts</div>
+                </div>
+                <div class="stat-item" data-filter-status="SUCCESS" data-filter-anomaly="all">
+                  <div class="stat ok" id="statOk">0</div>
+                  <div class="label">SUCCESS</div>
+                </div>
+                <div class="stat-item" data-filter-status="FAILED" data-filter-anomaly="all">
+                  <div class="stat fail" id="statFail">0</div>
+                  <div class="label">FAILED</div>
+                </div>
+                <div class="stat-item" data-filter-status="all" data-filter-anomaly="true">
+                  <div class="stat warn" id="statAnom">0</div>
+                  <div class="label">Anomalies</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="card">
+              <h2>Today at a Glance</h2>
+              <div class="table-wrap">
+                <table class="table" id="todayGlance">
+                  <thead>
+                    <tr>
+                      <th>Event</th>
+                      <th>Last Run</th>
+                      <th>Status</th>
+                      <th>Next Expected</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="card">
+              <h2>Alerts</h2>
+              <div class="table-wrap">
+                <table class="table" id="alerts">
+                  <thead>
+                    <tr>
+                      <th>Time</th>
+                      <th>Event</th>
+                      <th>Status</th>
+                      <th>Anomaly</th>
+                      <th>Next Expected</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <div id="pagination"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="certs-tab" class="tab-content">
+      <div class="main-content-grid">
+        <div class="filter-sidebar">
+          <div class="filter-card">
+            <h2>Certificate Filters</h2>
+            <div class="filter-group">
+              <label for="certTypeFilter">Type:</label>
+              <select id="certTypeFilter">
+                <option value="all">All</option>
+                <option value="IDP">IDP</option>
+                <option value="SP">SP</option>
+                <option value="KeyVault">KeyVault</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="certNameFilter">Name:</label>
+              <input type="text" id="certNameFilter" placeholder="Filter name...">
+            </div>
+            <div class="filter-group">
+              <label for="certStatusFilter">Status:</label>
+              <select id="certStatusFilter">
+                <option value="all">All</option>
+                <option value="Healthy">Healthy</option>
+                <option value="Expiring Soon">Expiring Soon</option>
+                <option value="Expired">Expired</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="certExpirationFilter">Expires On or Before:</label>
+              <input type="date" id="certExpirationFilter">
+            </div>
+            <div class="filter-group">
+              <label for="certOwnerFilter">Owner Team:</label>
+              <input type="text" id="certOwnerFilter" placeholder="Filter owner...">
+            </div>
+            <div class="filter-group">
+              <label for="certVendorFilter">Vendor:</label>
+              <input type="text" id="certVendorFilter" placeholder="Filter vendor...">
+            </div>
+          </div>
+        </div>
+        <div class="main-display">
+          <div class="cards">
+            <div class="card">
+              <h2>Certificate Monitoring</h2>
+              <div class="table-wrap">
+                <table class="table" id="certsTable">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Platform</th>
+                      <th>Expiration Date</th>
+                      <th>Status</th>
+                      <th>Next Action</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Dashboard is live and updated every 10 seconds.</p>
+  </footer>
+
+  <!-- Certificate Details Modal -->
+  <div id="certDetailsModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeCertDetailsModalBtn">&times;</span>
+      <h3 id="certModalName">Certificate Details</h3>
+      <div class="details-grid">
+        <div class="details-section">
+          <h3>Team & Vendor Info</h3>
+          <div class="table-wrap">
+            <table class="table" id="certTeamInfoTable">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Owner Team</th>
+                  <th>Subscriber</th>
+                  <th>Authorizer</th>
+                  <th>SPOC Name</th>
+                  <th>SPOC Email</th>
+                  <th>SPOC Phone</th>
+                  <th>Vendor Name</th>
+                  <th>Signed By</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="details-section">
+          <h3>Process & Tracking</h3>
+          <div class="table-wrap">
+            <table class="table" id="certProcessTable">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>SOP Created</th>
+                  <th>Updated in CA Portal</th>
+                  <th>Remedy Queue</th>
+                  <th>Incident/CRQ #</th>
+                  <th>Remarks</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alert History Modal -->
+  <div id="alertModal" class="modal">
+      <div class="modal-content">
+          <span class="close-btn" id="closeAlertModalBtn">&times;</span>
+          <h3 id="modalEventName"></h3>
+          <div class="modal-filters">
+              <select id="modalTimeFilter">
+                  <option value="all">All Time</option>
+                  <option value="1d">Last 1 Day</option>
+                  <option value="7d">Last 7 Days</option>
+              </select>
+              <select id="modalStatusFilter">
+                  <option value="all">All Statuses</option>
+                  <option value="SUCCESS">Success</option>
+                  <option value="FAILED">Failed</option>
+              </select>
+          </div>
+          <div class="table-wrap">
+              <table class="table" id="eventHistoryTable">
+                  <thead>
+                      <tr>
+                          <th>Time</th>
+                          <th>Status</th>
+                          <th>From</th>
+                          <th>To</th>
+                          <th>Subject</th>
+                          <th>Source Path</th>
+                          <th>Destination Path</th>
+                      </tr>
+                  </thead>
+                  <tbody></tbody>
+              </table>
+          </div>
+          <div id="modalPagination"></div>
+      </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
