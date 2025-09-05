@@ -7,7 +7,7 @@ With 13+ years of experience in enterprise-scale **data systems** and since 2022
 - 📍 Chicago, IL  
 - 📧 Rahul.nsec.c@email.com  
 - 📞 (773) 799-7905  
-- 🔗 [LinkedIn](https://www.linkedin.com/in/rahul-kumar-singh-44967456?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) | [GitHub]https://github.com/rahulnsecc/ml-projects-portfolio.git)
+- 🔗 [LinkedIn](https://www.linkedin.com/in/rahul-kumar-singh-44967456?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app) | [GitHub](https://github.com/rahulnsecc/ml-projects-portfolio)
 
 ---
 
